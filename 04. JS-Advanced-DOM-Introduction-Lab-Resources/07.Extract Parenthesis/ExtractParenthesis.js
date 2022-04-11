@@ -8,6 +8,6 @@ elementArr.push(match.groups['text']);
 
 match = pattern.exec(textElement.textContent);
 }
-textElement.textContent = elementArr.join('; ')
-
+textElement.textContent = elementArr
+return textElement.textContent = elementArr.join('; ')
 }
