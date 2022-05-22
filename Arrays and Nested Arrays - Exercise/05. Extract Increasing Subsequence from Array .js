@@ -1,7 +1,7 @@
 function solve(array) {
   const newArr = [];
   newArr.push(array[0]);
-  array.reduce(function (previous, current, index) {
+  array.reduce((previous, current, index) =>{
     if (previous <= current) {
       newArr.push(current);
       return current;
