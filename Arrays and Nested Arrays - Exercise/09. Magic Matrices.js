@@ -4,10 +4,11 @@ function solve(matrix) {
   for (let i = 0; i < matrix.length; i++) {
     let cSum = 0;
     let rSum = 0;
-    for (let k = 0; k < matrix.length; k++) {
+    for (let k = 0; k < matrix[i].length; k++) {
       cSum += matrix[i][k];
       rSum += matrix[k][i];
     }
+    
     newArr.push(cSum);
     newArr.push(rSum);
   }

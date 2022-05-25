@@ -42,14 +42,14 @@ function solve(input) {
     console.log(line.join("\t"));
   });
 
-  function checkForWinner(currentBoard, sign) {
+  function checkForWinner(dashBoard, player) {
     let isWinner = false;
 
     for (let i = 0; i < 3; i++) {
       if (
-        currentBoard[i][0] === sign &&
-        currentBoard[i][1] === sign &&
-        currentBoard[i][2] === sign
+        dashBoard[i][0] === player &&
+        dashBoard[i][1] === player &&
+        dashBoard[i][2] === player
       ) {
         isWinner = true;
 
@@ -57,9 +57,9 @@ function solve(input) {
       }
 
       if (
-        currentBoard[0][i] === sign &&
-        currentBoard[1][i] === sign &&
-        currentBoard[2][i] === sign
+        dashBoard[0][i] === player &&
+        dashBoard[1][i] === player &&
+        dashBoard[2][i] === player
       ) {
         isWinner = true;
 
@@ -69,12 +69,12 @@ function solve(input) {
 
     if (!isWinner) {
       if (
-        (currentBoard[0][0] === sign &&
-          currentBoard[1][1] === sign &&
-          currentBoard[2][2] === sign) ||
-        (currentBoard[2][0] === sign &&
-          currentBoard[1][1] === sign &&
-          currentBoard[0][2] === sign)
+        (dashBoard[0][0] === player &&
+          dashBoard[1][1] === player &&
+          dashBoard[2][2] === player) ||
+        (dashBoard[2][0] === player &&
+          dashBoard[1][1] === player &&
+          dashBoard[0][2] === player)
       ) {
         isWinner = true;
       }
