@@ -6,7 +6,7 @@ function solve() {
        let regex = new RegExp(searchField.value, 'gim');
        dataTr.map(e => {
            e.classList.remove('select');
-           if (e.innerText.match(regex) !== null) {
+           if (e.innerText.match(regex) != null) {
                e.className = 'select';
            }
        });
