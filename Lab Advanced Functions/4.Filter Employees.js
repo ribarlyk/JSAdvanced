@@ -1,12 +1,12 @@
-function sort(string, criteria) {
-  let arr = JSON.parse(string);
-  let [key, value] = criteria.split("-");
-  if (criteria == "all") {
-    arr
+function sort(json, command) {
+  let [key, value] = command.split("-");
+
+  if (command === "all") {
+    JSON.parse(json)
       .map((x, i) => `${i}. ${x.first_name} ${x.last_name} - ${x.email}`)
-      .forEach((x) => console.log(x));
+      .forEach((element) => {console.log(element)});
   } else {
-    arr
+    JSON.parse(json)
       .filter((x) => x[key] == value)
       .map((x, i) => `${i}. ${x.first_name} ${x.last_name} - ${x.email}`)
       .forEach((x) => console.log(x));
