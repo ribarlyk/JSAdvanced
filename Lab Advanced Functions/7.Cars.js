@@ -1,26 +1,28 @@
-function solve(arr) {
-  let currentName = ''
-  for (const list of arr) {
-    let commands = list.split(" ");
-    let command = commands[0];
-    let nameIs = commands[1];
-    let key = commands[2];
-    let value = commands[3]
-   
-    if (command === "create") {
-      currentName = nameIs;
-     currentName = {};
-    }
-    if (command === "set") {
-     currentName[key] = value;
-    }
-    if (command=== "print") {
-      console.log(currentName);
-    }
-    
-  }
+function solve(input) {
+  const data = {};
 
+  const commandsMap = {
+    create: (name, inheritance, parentName) => {
+      data[name] = inheritance ? Object.create(data[parentName]) : {};
+    },
+    set: (name, k, v) => {
+      data[name][k] = v;
+    },
+    print: (name) => {
+      let entries = [];
+      for (let line in data[name]) {
+        entries.push(`${line}:${data[name][line]}`);
+      }
+      console.log(entries.join(","));
+    },
+  };
+
+  input.forEach((x) => {
+    const [command, name, k, v] = x.split(" ");
+    commandsMap[command](name, k, v);
+  });
 }
+
 solve([
   "create c1",
   "create c2 inherit c1",
