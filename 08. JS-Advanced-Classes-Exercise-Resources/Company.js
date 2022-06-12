@@ -1,0 +1,3 @@
+class Company {
+    // TODO: implement this class...
+}

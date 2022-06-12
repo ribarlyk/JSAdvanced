@@ -6,6 +6,7 @@ class Circle {
     return this.radius * 2;
   }
   set diameter(value) {
+      if(value !== 'string')
     this.radius = value / 2;
   }
   get area() {
