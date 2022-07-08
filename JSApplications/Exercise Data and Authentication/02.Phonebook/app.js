@@ -11,32 +11,48 @@ function attachEvents() {
   let personElement = document.getElementById("person");
   let phoneElement = document.getElementById("phone");
   let ulElement = document.getElementById("phonebook");
+  let createBtn = document.getElementById("btnCreate");
+
   function onLoad() {
     fetch(baseurl)
       .then((response) => response.json())
       .then((phonebook) => {
+        ulElement.replaceChildren();
+
         Object.values(phonebook).map((x) => {
           let li = document.createElement("li");
           li.textContent = `${x.person}: ${x.phone}`;
-          let deleteBtn = document.createElement("button")
-           deleteBtn.textContent = "Delete";
-         li.addEventListener('click',(e)=>{
-            
-fetch(`http://localhost:3030/jsonstore/phonebook/${x._id}`,{
-    method : 'Delete',
-    
-})
-
-         })
+          let deleteBtn = document.createElement("button");
+          deleteBtn.textContent = "Delete";
+          li.addEventListener("click", (e) => {
+            let current = e.currentTarget;
+            ulElement.removeChild(current);
+            fetch(`http://localhost:3030/jsonstore/phonebook/${x._id}`, {
+              method: "Delete",
+            });
+          });
           li.appendChild(deleteBtn);
           ulElement.appendChild(li);
         });
-        
-        
       });
   }
- 
- 
+  createBtn.addEventListener("click", () => {
+    let forPost = {
+      person: `${personElement.value}`,
+      phone: `${phoneElement.value}`,
+    };
+    if(!personElement.value || !phoneElement.value){
+      return
+    }
+    fetch("http://localhost:3030/jsonstore/phonebook", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(forPost),
+    });
+    personElement.value = '';
+    phoneElement.value = '';
+    onLoad();
+  });
 }
 
 attachEvents();
