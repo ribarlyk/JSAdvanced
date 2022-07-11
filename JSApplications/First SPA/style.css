@@ -1,0 +1,22 @@
+header {
+    padding: 32px;
+    background-color: #cccccc;
+    position: relative;
+}
+nav div {
+    display: inline-block;
+}
+
+nav a {
+    display: inline-block;
+    background-color: salmon;
+    padding: 8px 16px;
+    margin: 0 8px;
+    text-decoration: none;
+    color: black;
+}
+
+nav a:hover {
+    background-color: #6c8b47;
+    color: white;
+}

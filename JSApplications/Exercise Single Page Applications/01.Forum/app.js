@@ -21,13 +21,11 @@ let dataObj = {
         }
 try{
 let resp = await fetch('url',{
-    method: 'POST',
-    headers:{
-        'Content-Type': 'application/json'
-    },
-    body : JSON.stringify(dataObj)
+    method: "GET",
+   
    
 })
+console.log(resp)
 if(resp.status != 200){
     throw new Error('Request failed')
 }}catch(err){
