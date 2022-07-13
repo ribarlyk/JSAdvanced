@@ -8,28 +8,30 @@ export function createRecipe() {
 }
 
 function onCreate(e) {
-    e.preventDefault()
+  e.preventDefault();
   let formData = new FormData(form);
   const name = formData.get("name");
   const img = formData.get("img");
   const ingredients = formData.get("ingredients");
   const steps = formData.get("steps");
+  
 
   const data = {
     name,
     img,
     ingredients,
-    steps
-  }
+    steps,
+  };
   fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "X-Authorization": JSON.parse(localStorage.getItem("token")),
     },
-    body: JSON.stringify(data)
-      
+    body: JSON.stringify(data),
   })
-  .then((resp) => resp.json())
-  .then((recipe) => {
-    console.log(recipe)})
-  }
+    .then((resp) => resp.json())
+    .then((recipe) => {
+      alert('recipe created');
+    });
+}

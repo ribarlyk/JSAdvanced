@@ -2,7 +2,7 @@ const userNavigation = document.querySelector('#user');
 const guestNavigation = document.querySelector('#guest')
 
 export function updateNavigation(){
-    let serializedToken = localStorage.token
+  let serializedToken = localStorage.token;
 
 
     if(serializedToken){
